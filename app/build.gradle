@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionName '1.0'
+        versionCode 1
+        resConfigs 'en', 'en-rUS'
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            multiDexEnabled true
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+        }
+    }
+}
+
+dependencies {
+
+    implementation "androidx.appcompat:appcompat:1.1.0"
+
+    implementation name:"maps-sdk-3.0.0-beta", ext:"aar"
+
+    implementation "com.google.android.gms:play-services-base:17.2.1"
+    implementation "com.google.android.gms:play-services-gcm:17.0.0"
+    implementation "com.google.android.gms:play-services-location:17.0.0"
+}
