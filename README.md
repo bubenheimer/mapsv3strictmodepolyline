@@ -1,1 +1,1 @@
-Set Google API key in `strings.xml`
+Set google_api_key in `strings.xml`
