@@ -1,6 +1,8 @@
 package com.bubenheimer.mapsv3strictmodepolyline;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.StrictMode;
 
 import com.google.android.libraries.maps.GoogleMap;
@@ -28,8 +30,13 @@ public final class MainActivity extends AppCompatActivity {
                 (SupportMapFragment) getSupportFragmentManager().getFragments().get(0);
         mapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
-            public void onMapReady(GoogleMap googleMap) {
-                googleMap.addPolyline(new PolylineOptions().add(new LatLng(0.0, 1.0)));
+            public void onMapReady(final GoogleMap googleMap) {
+                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        googleMap.addPolyline(new PolylineOptions().add(new LatLng(0.0, 1.0)));
+                    }
+                }, 10_000L);
             }
         });
     }
